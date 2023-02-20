@@ -9,6 +9,7 @@ public class Trade {
     @Id
     private String tradeReference;
     private String productId;
+    private String brokerId;
     private Date tradeDate;
     private Long quantity;
     private Character buySell;
