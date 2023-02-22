@@ -9,7 +9,6 @@ Trade Reporting Application for Complus Asset Management
 5. lombok
 
 ## Setup
-1. Run the SQL commands, present in `src/main/resources/data.sql`, using H2 Console to insert mock data into the database.
 
 ## Running the application
 
