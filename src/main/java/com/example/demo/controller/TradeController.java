@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Trade;
+import com.example.demo.repository.TradeRepository;
 import com.example.demo.service.TradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,9 @@ import java.util.List;
 public class TradeController {
     @Autowired
     private TradeService tradeService;
+
+    @Autowired
+    private TradeRepository tradeRepository;
 
     @GetMapping()
     public List<Trade> getAllTrades() {
