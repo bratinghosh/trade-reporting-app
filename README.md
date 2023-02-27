@@ -13,8 +13,9 @@ Trade Reporting Application for Complus Asset Management.
 9. junit
 
 ## Setup
-1. Open the project in IntelliJ.
-2. The database is populated with test data present in `src/main/resources/data.sql` file.
+1. Create a `trade-reports` folder in the base directory. All the trade reports will be saved in this folder.
+2. Open the project in IntelliJ.
+3. The database is populated with test data present in `src/main/resources/data.sql` file.
 
 ## Starting the application
 1. Build and run the application in IntelliJ.
