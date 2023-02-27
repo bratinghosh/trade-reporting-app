@@ -16,10 +16,6 @@ public class Trade {
     @Id
     @Column
     private String tradeRef;
-//    @Column
-//    private String productId;
-//    @Column
-//    private String brokerId;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(
             name="brokerId",

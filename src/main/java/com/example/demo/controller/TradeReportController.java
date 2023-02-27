@@ -22,18 +22,18 @@ public class TradeReportController {
     }
 
     @GetMapping("/query")
-    public List<TradeCascadedResponseDto> getAllTradesCascadedByProductTypeByBrokerName(
+    public List<TradeReportDto> getAllTradesMappedByProductTypeByBrokerName(
             @RequestParam String productType,
             @RequestParam String brokerName
     ) {
-        return tradeReportService.getAllTradesCascadedByProductTypeByBrokerName(productType, brokerName);
+        return tradeReportService.getAllTradesMappedByProductTypeByBrokerName(productType, brokerName);
     }
 
     @GetMapping("/query/export-csv")
-    public List<TradeReportDto> getAllTradesCascadedByProductTypeByBrokerNameSaveCSV(
+    public List<TradeReportDto> getAllTradesMappedByProductTypeByBrokerNameSaveCSV(
             @RequestParam String productType,
             @RequestParam String brokerName
     ) {
-        return tradeReportService.getAllTradesCascadedByProductTypeByBrokerNameSaveCSV(productType, brokerName);
+        return tradeReportService.getAllTradesMappedByProductTypeByBrokerNameSaveCSV(productType, brokerName);
     }
 }

@@ -26,16 +26,14 @@ public class TradeReportService {
         return tradeRepository.getAllTradesCascaded();
     }
 
-    public List<TradeCascadedResponseDto> getAllTradesCascadedByProductTypeByBrokerName(
-            String productType,
-            String brokerName
-    ) {
-        return tradeRepository.getAllTradesCascadedByProductTypeByBrokerName(
-                productType, brokerName
-        );
+    public List<TradeReportDto> mapTradeCascadedResponseDtoToTradeReportDto(List<TradeCascadedResponseDto> trades) {
+        MapperUtil mapperUtil = null;
+        List<TradeReportDto> tradesMapped = mapperUtil.mapList(trades, TradeReportDto.class);
+
+        return tradesMapped;
     }
 
-    public List<TradeReportDto> getAllTradesCascadedByProductTypeByBrokerNameSaveCSV(
+    public List<TradeReportDto> getAllTradesMappedByProductTypeByBrokerName(
             String productType,
             String brokerName
     ) {
@@ -43,15 +41,23 @@ public class TradeReportService {
                 productType,
                 brokerName
         );
+        return mapTradeCascadedResponseDtoToTradeReportDto(trades);
+    }
 
-        // Map TradeCascadedResponseDto to TradeReportDto
-        MapperUtil mapperUtil = null;
-        List<TradeReportDto> tradesMapped = mapperUtil.mapList(trades, TradeReportDto.class);
+    public List<TradeReportDto> getAllTradesMappedByProductTypeByBrokerNameSaveCSV(
+            String productType,
+            String brokerName
+    ) {
+        List<TradeCascadedResponseDto> trades = tradeRepository.getAllTradesCascadedByProductTypeByBrokerName(
+                productType,
+                brokerName
+        );
+        List<TradeReportDto> tradesMapped = mapTradeCascadedResponseDtoToTradeReportDto(trades);
 
         // Convert JSON response to CSV file and save in trade-reports/ directory
         // CSV file name format: productType_brokerName_<CURRENT DATETIME>.csv
         Writer writer = null;
-        final String filePath = "trade-reports/productType_brokerName_" + LocalTime.now() + ".csv";
+        final String filePath = "trade-reports/byProductTypeBrokerName_" + LocalTime.now() + ".csv";
 
         try {
             writer = new FileWriter(filePath);
